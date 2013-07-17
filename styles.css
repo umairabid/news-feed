@@ -1,0 +1,76 @@
+.feed_head {
+    -webkit-border-radius: 5px 5px 0px 0px;
+    -moz-border-radius: 5px 5px 0px 0px;
+    border-radius: 5px 5px 0px 0px;
+    overflow: hidden;
+    border: #d9d9d9 solid 1px;
+    border-top: none;
+	background-color: #CDCDCD;
+    height: 48px;
+    line-height: 48px;
+    color: #000;
+    text-transform: uppercase;
+    font-size: 17px;
+    font-weight: normal;
+    text-align: center;
+	margin: 0;
+}
+.main_container{
+	margin: auto;
+	font-family: 'avenir_bookregular';
+	position: relative;
+	width: 500px;
+}
+.feeds_container{
+	width: 300px;
+	float: right;
+}
+.feeds{
+	border: 1px #CDCDCD solid;
+}
+.feeds ul{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.feeds li {
+    padding: 14px 15px;
+    font-size: 13px;
+    color: #333333;
+    position: relative;
+    background: #fbfbfb url(images/right_sprtline.gif) repeat-x left bottom;
+}
+.feeds li.odd {
+    background: #f7f7f7 url(images/right_sprtline.gif) repeat-x left bottom;
+}
+.feeds li .feedtext {
+    width: 180px;
+    display: block;
+}
+.feeds li .iconAdd {
+    position: absolute;
+    right: 24px;
+    top: 25px;
+}
+.feeds li a {
+    color: #3cadcd;
+}
+.feeds .loading {
+    position: absolute;
+    left: 1px;
+    bottom: 1px;
+    padding: 5px 0;
+    background: #fafafa;
+    text-align: center;
+    width: 293px;
+    -webkit-border-radius: 0 0 5px 5px;
+    -moz-border-radius: 0 0 5px 5px;
+    border-radius: 0 0 5px 5px;
+    overflow: hidden;
+}
+ div.loading {
+	display: none;
+}
+.form{
+	float: left;
+}
