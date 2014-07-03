@@ -13,7 +13,9 @@ if(isset($_POST['addnews'])){
 * Preparing and getting response for latest feed items.
 **/
 if(isset($_POST['latest_news_time'])){
-	$sql = "SELECT * FROM news WHERE date > '".$_POST['latest_news_time']."' ORDER BY date DESC";
+	$sql = "SELECT * FROM news ";  
+	$sql .= "WHERE date > '".$_POST['latest_news_time']."' ";
+	$sql .= "ORDER BY date DESC";
 	$resource = mysql_query($sql);
 	$current_time = $_POST['latest_news_time'];
 	$item = mysql_fetch_assoc($resource);
@@ -23,9 +25,12 @@ if(isset($_POST['latest_news_time'])){
 		$resource = mysql_query($sql);
 		$item = mysql_fetch_assoc($resource);
 		$last_news_time = $item['date'];
+		if(!$item['date']){
+			$last_news_time = -1;
+		}
 	}
 	?>
-	<li id="<?php echo $item['date'] ?>">
+	<li class="response" id="<?php echo $item['date'] ?>">
 		<span class="feedtext"><?php echo $item['description'] ?> was added by <b><?php echo $item['name'] ?></b></span>
 	</li>
 	<?php
@@ -45,6 +50,7 @@ while($row = mysql_fetch_assoc($resource)){
 }
 
 ?>
+
 <html>
 <head>
 <title>:: News Feed ::</title>
@@ -100,8 +106,12 @@ $(function(){
 * Function to update the news feed
 **/
 function updateFeed(){
-		var id = 0;
+
 		id = $('#feeds li :first').attr('id');
+if(!id){
+	id = 0;
+}
+		
         $.ajax({
             'url' : 'index.php',
             'type' : 'POST',
@@ -110,9 +120,8 @@ function updateFeed(){
             },
             success : function(data){
 				setTimeout('updateFeed()', 1000);
-				if(id != 0){
-                	$(data).prependTo("#feeds ul");
-				}
+				$(data).prependTo("#feeds ul");
+		
             }
         }) 
 	}
